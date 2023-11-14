@@ -7,6 +7,7 @@ public class Calculadora extends javax.swing.JFrame {
     AlmacenNumeros numero = new AlmacenNumeros();
     
     float num1, num2;
+    String signo;
     
 
     /**
@@ -529,8 +530,9 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void labelSumaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSumaMouseClicked
         //Imprime el signo de suma, en el txtArea de nombre MostrarNumeros
-        num1 = Integer.parseInt(MostrarNumeros.getText());
-        String suma = "+";
+        num1 = Float.parseFloat(MostrarNumeros.getText());
+        numero.setNum1(num1);
+        signo = "+";
         MostrarNumeros.setText("");
         
         
@@ -552,7 +554,17 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_labelDivisionMouseClicked
 
     private void labelResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelResultadoMouseClicked
+        num2 = Float.parseFloat(MostrarNumeros.getText());
+        numero.setNum2(num2);
+        switch (signo){
+            
+            case "+":
+                
+                MostrarNumeros.setText(Float.toString(num1+num2));
+                
         
+        
+        }
     }//GEN-LAST:event_labelResultadoMouseClicked
 
     /**
