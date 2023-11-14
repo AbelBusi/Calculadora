@@ -1,10 +1,19 @@
 package JFRAMES;
+
+import javax.swing.JOptionPane;
+
 /**
  * @author cesar
  */
 public class Calculadora extends javax.swing.JFrame {
     
+    //este objeto creado es para poder llamar a las variables que seran usados durante el proceso matematico de la calculadora
     AlmacenNumeros numero = new AlmacenNumeros();
+    
+    //Estas variables serviran para darle movimiento al programa
+     int xMouse, yMouse;
+    
+    //Estas dos variables almacenaraN el txt
     int num1;
     int num2;
     
@@ -27,6 +36,7 @@ public class Calculadora extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         panelPrincipal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         MostrarNumeros = new javax.swing.JTextArea();
@@ -57,9 +67,24 @@ public class Calculadora extends javax.swing.JFrame {
         panelMultiplicacion = new javax.swing.JPanel();
         labelMultiplicacion = new javax.swing.JLabel();
         panelDivision = new javax.swing.JPanel();
-        labelDivision = new javax.swing.JLabel();
+        labelLimpiar = new javax.swing.JLabel();
         panelSuma = new javax.swing.JPanel();
         labelSuma = new javax.swing.JLabel();
+        panelDivision1 = new javax.swing.JPanel();
+        labelDivision = new javax.swing.JLabel();
+        panelSalir = new javax.swing.JPanel();
+        salirlabelX = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -67,6 +92,16 @@ public class Calculadora extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(new java.awt.Color(32, 32, 32));
+        panelPrincipal.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelPrincipalMouseDragged(evt);
+            }
+        });
+        panelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelPrincipalMousePressed(evt);
+            }
+        });
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MostrarNumeros.setColumns(20);
@@ -74,7 +109,7 @@ public class Calculadora extends javax.swing.JFrame {
         MostrarNumeros.setRows(5);
         jScrollPane1.setViewportView(MostrarNumeros);
 
-        panelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 630, 180));
+        panelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 630, 180));
 
         panelResultado.setBackground(new java.awt.Color(64, 60, 60));
 
@@ -91,14 +126,18 @@ public class Calculadora extends javax.swing.JFrame {
         panelResultado.setLayout(panelResultadoLayout);
         panelResultadoLayout.setHorizontalGroup(
             panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelResultadoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelResultadoLayout.setVerticalGroup(
             panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelResultadoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(labelResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        panelPrincipal.add(panelResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, 80, 80));
+        panelPrincipal.add(panelResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 80, 80));
 
         PanelBoton7.setBackground(new java.awt.Color(64, 60, 60));
         PanelBoton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,9 +146,17 @@ public class Calculadora extends javax.swing.JFrame {
         label7.setForeground(new java.awt.Color(255, 255, 255));
         label7.setText("   7");
         label7.setVerifyInputWhenFocusTarget(false);
+        label7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                label7MouseDragged(evt);
+            }
+        });
         label7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 label7MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                label7MousePressed(evt);
             }
         });
 
@@ -209,6 +256,9 @@ public class Calculadora extends javax.swing.JFrame {
         label8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 label8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                label8MouseEntered(evt);
             }
         });
 
@@ -395,12 +445,12 @@ public class Calculadora extends javax.swing.JFrame {
 
         panelDivision.setBackground(new java.awt.Color(64, 60, 60));
 
-        labelDivision.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        labelDivision.setForeground(new java.awt.Color(255, 255, 255));
-        labelDivision.setText("   /");
-        labelDivision.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelLimpiar.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        labelLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        labelLimpiar.setText("   C");
+        labelLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelDivisionMouseClicked(evt);
+                labelLimpiarMouseClicked(evt);
             }
         });
 
@@ -408,14 +458,14 @@ public class Calculadora extends javax.swing.JFrame {
         panelDivision.setLayout(panelDivisionLayout);
         panelDivisionLayout.setHorizontalGroup(
             panelDivisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelDivision, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(labelLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
         panelDivisionLayout.setVerticalGroup(
             panelDivisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelDivision, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(labelLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
 
-        panelPrincipal.add(panelDivision, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
+        panelPrincipal.add(panelDivision, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, -1, -1));
 
         panelSuma.setBackground(new java.awt.Color(64, 60, 60));
 
@@ -440,6 +490,52 @@ public class Calculadora extends javax.swing.JFrame {
         );
 
         panelPrincipal.add(panelSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 80, 80));
+
+        panelDivision1.setBackground(new java.awt.Color(64, 60, 60));
+
+        labelDivision.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        labelDivision.setForeground(new java.awt.Color(255, 255, 255));
+        labelDivision.setText("   /");
+        labelDivision.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelDivisionMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelDivision1Layout = new javax.swing.GroupLayout(panelDivision1);
+        panelDivision1.setLayout(panelDivision1Layout);
+        panelDivision1Layout.setHorizontalGroup(
+            panelDivision1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelDivision, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        panelDivision1Layout.setVerticalGroup(
+            panelDivision1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelDivision, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+
+        panelPrincipal.add(panelDivision1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
+
+        salirlabelX.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        salirlabelX.setForeground(new java.awt.Color(255, 255, 255));
+        salirlabelX.setText("     X");
+        salirlabelX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirlabelXMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelSalirLayout = new javax.swing.GroupLayout(panelSalir);
+        panelSalir.setLayout(panelSalirLayout);
+        panelSalirLayout.setHorizontalGroup(
+            panelSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(salirlabelX, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+        );
+        panelSalirLayout.setVerticalGroup(
+            panelSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(salirlabelX, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        panelPrincipal.add(panelSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 110, 50));
 
         getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 820));
 
@@ -569,6 +665,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     //Este evento devuelve el resultado de la operacion 
     private void labelResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelResultadoMouseClicked
+        try {
         num2 = Integer.parseInt(MostrarNumeros.getText());//se puede ver que despues a ver capturado el num1, y selecionamos "resultado" toma los valores que hubieron en el txtarea
         //despues los guarda, lo que se observa es un cambio de string a entero
         numero.setNum2(num2);//almacen en num2
@@ -576,20 +673,69 @@ public class Calculadora extends javax.swing.JFrame {
             //Lo que hace es presentar casos de signos, como un if, y resuelve la operacion
             case "+":
                 
-                MostrarNumeros.setText(Float.toString(num1+num2));
-                
+                MostrarNumeros.setText(Integer.toString(num1+num2));
+                break;
             case "-":
-                MostrarNumeros.setText(Float.toString(num1+num2));
+                MostrarNumeros.setText(Integer.toString(num1-num2));
                 break;
             case "*":
-                MostrarNumeros.setText(Float.toString(num1*num2));
+                MostrarNumeros.setText(Integer.toString(num1*num2));
                 break;
             case "/":
+                try {
                 MostrarNumeros.setText(Float.toString(num1/num2));
+              
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Error no se puede dividir entre 0","Error de Indeterminacion", JOptionPane.ERROR_MESSAGE);
+                    
+                }
                 break;
         
         }
+        }catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Error, de ejecucion de numeros","Error posibles numeros en conflicto",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_labelResultadoMouseClicked
+
+    //limpiar el area
+    private void labelLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLimpiarMouseClicked
+        MostrarNumeros.setText("");
+    }//GEN-LAST:event_labelLimpiarMouseClicked
+
+//Esta parte la dejo asi nomas xd, noce porque la puse y no ce como borrarlo del netbeans :c
+    private void label7MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label7MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_label7MouseDragged
+
+    private void label7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label7MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_label7MousePressed
+
+    private void label8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label8MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_label8MouseEntered
+
+    private void panelPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMousePressed
+        // TODO add your handling code here:
+        
+        xMouse= evt.getX();
+        
+        yMouse= evt.getY();
+    }//GEN-LAST:event_panelPrincipalMousePressed
+
+    private void panelPrincipalMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseDragged
+        // TODO add your handling code here:
+        
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x- xMouse, y-yMouse);
+    }//GEN-LAST:event_panelPrincipalMouseDragged
+
+    //Evento que sirve para salir del programa
+    private void salirlabelXMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirlabelXMousePressed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_salirlabelXMousePressed
 
     /**
      * @param args the command line arguments
@@ -629,6 +775,7 @@ public class Calculadora extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea MostrarNumeros;
     private javax.swing.JPanel PanelBoton7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label0;
     private javax.swing.JLabel label1;
@@ -641,6 +788,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JLabel label8;
     private javax.swing.JLabel label9;
     private javax.swing.JLabel labelDivision;
+    private javax.swing.JLabel labelLimpiar;
     private javax.swing.JLabel labelMultiplicacion;
     private javax.swing.JLabel labelResta;
     private javax.swing.JLabel labelResultado;
@@ -655,10 +803,13 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JPanel panelBoton8;
     private javax.swing.JPanel panelBoton9;
     private javax.swing.JPanel panelDivision;
+    private javax.swing.JPanel panelDivision1;
     private javax.swing.JPanel panelMultiplicacion;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelResta;
     private javax.swing.JPanel panelResultado;
+    private javax.swing.JPanel panelSalir;
     private javax.swing.JPanel panelSuma;
+    private javax.swing.JLabel salirlabelX;
     // End of variables declaration//GEN-END:variables
 }
