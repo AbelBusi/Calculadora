@@ -25,8 +25,10 @@ public class AlmacenNumeros {
     private String resta = "-";
     private String division ="/";
     private String multiplicacion = "x";
-    private float num1;
-    private float num2;
+    private int num1;
+    private int num2;
+    private float num1decimal;
+    private float num2decimal;
     
     
     
@@ -37,7 +39,7 @@ public class AlmacenNumeros {
     //Cosntructor completo
     
     public AlmacenNumeros(String n0, String n1, String n2, String n3, String n4, String n5, String n6, String n7, String n8, String n9, String suma, String resta,
-            String multiplicacion, String division, float num1, float num2){
+            String multiplicacion, String division, int num1, int num2, float num1decimal, float num2decimal){
         this.n0=n0;
         this.n1=n1;
         this.n2=n2;
@@ -54,6 +56,9 @@ public class AlmacenNumeros {
         this.division=division;
         this.num1=num1;
         this.num2=num2;
+        this.num1decimal=num1decimal;
+        this.num2decimal=num2decimal;
+        
     }
    
 
@@ -174,7 +179,7 @@ public class AlmacenNumeros {
         return num1;
     }
 
-    public void setNum1(float num1) {
+    public void setNum1(int num1) {
         this.num1 = num1;
     }
 
@@ -182,8 +187,24 @@ public class AlmacenNumeros {
         return num2;
     }
 
-    public void setNum2(float num2) {
+    public void setNum2(int num2) {
         this.num2 = num2;
+    }
+
+    public float getNum1decimal() {
+        return num1decimal;
+    }
+
+    public void setNum1decimal(float num1decimal) {
+        this.num1decimal = num1decimal;
+    }
+
+    public float getNum2decimal() {
+        return num2decimal;
+    }
+
+    public void setNum2decimal(float num2decimal) {
+        this.num2decimal = num2decimal;
     }
     
     

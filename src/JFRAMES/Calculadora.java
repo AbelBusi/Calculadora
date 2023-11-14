@@ -5,8 +5,9 @@ package JFRAMES;
 public class Calculadora extends javax.swing.JFrame {
     
     AlmacenNumeros numero = new AlmacenNumeros();
+    int num1;
+    int num2;
     
-    float num1, num2;
     String signo;
     
 
@@ -528,41 +529,64 @@ public class Calculadora extends javax.swing.JFrame {
         
     }//GEN-LAST:event_label0MouseClicked
 
+    //Operacion de suma
     private void labelSumaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSumaMouseClicked
         //Imprime el signo de suma, en el txtArea de nombre MostrarNumeros
-        num1 = Float.parseFloat(MostrarNumeros.getText());
-        numero.setNum1(num1);
-        signo = "+";
-        MostrarNumeros.setText("");
+        num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
+        numero.setNum1(num1); 
+        signo = "+"; //sera utilizado en el switch
+        MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
         
         
     }//GEN-LAST:event_labelSumaMouseClicked
 
+    //Operacion de resta
     private void labelRestaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRestaMouseClicked
         //Imprime el signo de resta, en el txtArea de nombre MostrarNumeros
-        MostrarNumeros.append(numero.getResta());
+        num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
+        numero.setNum1(num1); 
+        signo = "-"; //sera utilizado en el switch
+        MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
     }//GEN-LAST:event_labelRestaMouseClicked
 
+    //Operacion de multiplicacion
     private void labelMultiplicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMultiplicacionMouseClicked
         //Imprime el signo de multiplicacion, en el txtArea de nombre MostrarNumeros
-        MostrarNumeros.append(numero.getMultiplicacion());
+        num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
+        numero.setNum1(num1); 
+        signo = "*"; //sera utilizado en el switch
+        MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
     }//GEN-LAST:event_labelMultiplicacionMouseClicked
 
+    //Operacion de division
     private void labelDivisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelDivisionMouseClicked
         //Imprime el signo de division, en el txtArea de nombre MostrarNumeros
-        MostrarNumeros.append(numero.getDivision());
+        num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
+        numero.setNum1(num1); 
+        signo = "/"; //sera utilizado en el switch
+        MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
     }//GEN-LAST:event_labelDivisionMouseClicked
 
+    //Este evento devuelve el resultado de la operacion 
     private void labelResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelResultadoMouseClicked
-        num2 = Float.parseFloat(MostrarNumeros.getText());
-        numero.setNum2(num2);
+        num2 = Integer.parseInt(MostrarNumeros.getText());//se puede ver que despues a ver capturado el num1, y selecionamos "resultado" toma los valores que hubieron en el txtarea
+        //despues los guarda, lo que se observa es un cambio de string a entero
+        numero.setNum2(num2);//almacen en num2
         switch (signo){
-            
+            //Lo que hace es presentar casos de signos, como un if, y resuelve la operacion
             case "+":
                 
                 MostrarNumeros.setText(Float.toString(num1+num2));
                 
-        
+            case "-":
+                MostrarNumeros.setText(Float.toString(num1+num2));
+                break;
+            case "*":
+                MostrarNumeros.setText(Float.toString(num1*num2));
+                break;
+            case "/":
+                MostrarNumeros.setText(Float.toString(num1/num2));
+                break;
         
         }
     }//GEN-LAST:event_labelResultadoMouseClicked
