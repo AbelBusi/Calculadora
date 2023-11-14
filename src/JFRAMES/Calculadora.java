@@ -1,12 +1,13 @@
 package JFRAMES;
-
 /**
- *
  * @author cesar
  */
 public class Calculadora extends javax.swing.JFrame {
     
     AlmacenNumeros numero = new AlmacenNumeros();
+    
+    float num1, num2;
+    
 
     /**
      * Creates new form Calculadora
@@ -67,6 +68,7 @@ public class Calculadora extends javax.swing.JFrame {
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MostrarNumeros.setColumns(20);
+        MostrarNumeros.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         MostrarNumeros.setRows(5);
         jScrollPane1.setViewportView(MostrarNumeros);
 
@@ -527,9 +529,10 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void labelSumaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSumaMouseClicked
         //Imprime el signo de suma, en el txtArea de nombre MostrarNumeros
-        int contador=0;
+        num1 = Integer.parseInt(MostrarNumeros.getText());
+        String suma = "+";
+        MostrarNumeros.setText("");
         
-        MostrarNumeros.append(numero.getSuma());
         
     }//GEN-LAST:event_labelSumaMouseClicked
 

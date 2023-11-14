@@ -25,6 +25,8 @@ public class AlmacenNumeros {
     private String resta = "-";
     private String division ="/";
     private String multiplicacion = "x";
+    private float num1;
+    private float num2;
     
     
     
@@ -35,7 +37,7 @@ public class AlmacenNumeros {
     //Cosntructor completo
     
     public AlmacenNumeros(String n0, String n1, String n2, String n3, String n4, String n5, String n6, String n7, String n8, String n9, String suma, String resta,
-            String multiplicacion, String division){
+            String multiplicacion, String division, float num1, float num2){
         this.n0=n0;
         this.n1=n1;
         this.n2=n2;
@@ -50,6 +52,8 @@ public class AlmacenNumeros {
         this.resta=resta;
         this.multiplicacion=multiplicacion;
         this.division=division;
+        this.num1=num1;
+        this.num2=num2;
     }
    
 
@@ -164,6 +168,22 @@ public class AlmacenNumeros {
 
     public void setMultiplicacion(String multiplicacion) {
         this.multiplicacion = multiplicacion;
+    }
+
+    public float getNum1() {
+        return num1;
+    }
+
+    public void setNum1(float num1) {
+        this.num1 = num1;
+    }
+
+    public float getNum2() {
+        return num2;
+    }
+
+    public void setNum2(float num2) {
+        this.num2 = num2;
     }
     
     
