@@ -627,40 +627,62 @@ public class Calculadora extends javax.swing.JFrame {
 
     //Operacion de suma
     private void labelSumaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSumaMouseClicked
+        //Validacion, si en caso se presiona el signo antes de un numero
+        try {
         //Imprime el signo de suma, en el txtArea de nombre MostrarNumeros
         num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
         numero.setNum1(num1); 
         signo = "+"; //sera utilizado en el switch
         MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
-        
+        }catch(Exception e){
+       
+            JOptionPane.showMessageDialog(null, "Se presiono el signo antes de elegir un numero, selecciona primero el numero","Error de signos",JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_labelSumaMouseClicked
 
     //Operacion de resta
     private void labelRestaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRestaMouseClicked
+        //Validacion, si en caso se presiona el signo antes de un numero
+        try {
         //Imprime el signo de resta, en el txtArea de nombre MostrarNumeros
         num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
         numero.setNum1(num1); 
         signo = "-"; //sera utilizado en el switch
         MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
+        }catch(Exception e ){
+            
+            JOptionPane.showMessageDialog(null, "Se presiono el signo antes de elegir un numero, selecciona primero el numero","Error de signos",JOptionPane.ERROR_MESSAGE);
+
+        }
     }//GEN-LAST:event_labelRestaMouseClicked
 
     //Operacion de multiplicacion
     private void labelMultiplicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMultiplicacionMouseClicked
+        //Validacion, si en caso se presiona el signo antes de un numero
+        try {
         //Imprime el signo de multiplicacion, en el txtArea de nombre MostrarNumeros
         num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
         numero.setNum1(num1); 
         signo = "*"; //sera utilizado en el switch
         MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
+        }catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Se presiono el signo antes de elegir un numero, selecciona primero el numero","Error de signos",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_labelMultiplicacionMouseClicked
 
     //Operacion de division
     private void labelDivisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelDivisionMouseClicked
+        //Validacion, si en caso se presiona el signo antes de un numero
+        try {
         //Imprime el signo de division, en el txtArea de nombre MostrarNumeros
-        num1 = Integer.parseInt(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
+        num1 = (int) Float.parseFloat(MostrarNumeros.getText()); //lo que hace es capturar el txtarea y lo almacena en la variable num1 de la clase AlmacenNumeros
         numero.setNum1(num1); 
         signo = "/"; //sera utilizado en el switch
         MostrarNumeros.setText("");//despues de haber almacenado las variables, lo que hace es poner en blanco el txtarea
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Se presiono el signo antes de elegir un numero, selecciona primero el numero","Error de signos",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_labelDivisionMouseClicked
 
     //Este evento devuelve el resultado de la operacion 
@@ -668,6 +690,7 @@ public class Calculadora extends javax.swing.JFrame {
         try {
         num2 = Integer.parseInt(MostrarNumeros.getText());//se puede ver que despues a ver capturado el num1, y selecionamos "resultado" toma los valores que hubieron en el txtarea
         //despues los guarda, lo que se observa es un cambio de string a entero
+        float num3=Float.parseFloat(MostrarNumeros.getText());
         numero.setNum2(num2);//almacen en num2
         switch (signo){
             //Lo que hace es presentar casos de signos, como un if, y resuelve la operacion
@@ -683,7 +706,7 @@ public class Calculadora extends javax.swing.JFrame {
                 break;
             case "/":
                 try {
-                MostrarNumeros.setText(Float.toString(num1/num2));
+                MostrarNumeros.setText(Float.toString(num1/num3));
               
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Error no se puede dividir entre 0","Error de Indeterminacion", JOptionPane.ERROR_MESSAGE);
